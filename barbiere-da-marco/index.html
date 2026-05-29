@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbiere da Marco – Napoli</title>
+<meta name="description" content="Barbiere da Marco a Napoli: taglio uomo, barba, styling. Da oltre 15 anni il punto di riferimento per uomo nel centro di Napoli. Prenota ora.">
+<meta property="og:title" content="Barbiere da Marco – Napoli">
+<meta property="og:description" content="Taglio, barba e grooming per uomo. Professionalità e stile nel cuore di Napoli.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1a1a2e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent: #c9a84c;
+  --accent-dark: #a8882e;
+  --bg: #faf8f5;
+  --bg-dark: #1a1a2e;
+  --text: #2d2d2d;
+  --text-light: #6b6b6b;
+  --white: #ffffff;
+  --gold: #c9a84c;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3, .hero-subtitle {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* HERO */
+.hero {
+  background: var(--bg-dark);
+  color: var(--white);
+  padding: 120px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+}
+
+.hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 40px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 8px;
+  font-weight: 600; font-size: 1rem;
+  text-decoration: none; cursor: pointer;
+  transition: all 0.2s; border: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+  background: var(--accent); color: var(--bg-dark);
+}
+.btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+/* SECTION */
+.section {
+  padding: 90px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 0 auto 56px;
+  font-size: 1.05rem;
+}
+
+/* ABOUT */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.about-image {
+  background: #e8e4dd;
+  border-radius: 16px;
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-style: italic;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.about-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  color: #444;
+  line-height: 1.7;
+}
+
+/* SERVICES */
+.services {
+  background: var(--white);
+}
+.services-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: var(--bg);
+  padding: 36px 28px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+.service-card:hover { transform: translateY(-4px); }
+
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.service-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.service-card p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.service-price {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--bg-dark);
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* GALLERY */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  background: #e8e4dd;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-light);
+  font-size: 0.85rem;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* TESTIMONIALS */
+.testimonials {
+  background: var(--white);
+}
+
+.testimonials-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.testimonial-card {
+  background: var(--bg);
+  padding: 32px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.testimonial-card::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--gold);
+  opacity: 0.3;
+  position: absolute;
+  top: 16px; left: 24px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: #444;
+  margin-bottom: 16px;
+  padding-top: 20px;
+}
+
+.testimonial-author {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.testimonial-source {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* HOURS + CONTACT */
+.contact-section {
+  background: var(--bg-dark);
+  color: var(--white);
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 90px 24px;
+}
+
+.contact-inner .section-title { color: var(--white); }
+.contact-inner .section-subtitle { color: rgba(255,255,255,0.6); }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+.contact-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.contact-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.contact-item-icon {
+  font-size: 1.3rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.contact-item-text {
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
+}
+
+.hours-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.hours-table td {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.hours-table td:last-child {
+  text-align: right;
+  color: rgba(255,255,255,0.6);
+}
+
+.hours-table .closed td:last-child {
+  color: #e74c3c;
+}
+
+/* MAP */
+.map-container {
+  margin-top: 32px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  display: block;
+}
+
+/* WHATSAPP FAB */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 100;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-fab svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  border-top: 1px solid #e8e4dd;
+}
+
+.footer a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 80px 20px 70px; }
+  .section { padding: 60px 20px; }
+  .services-inner { padding: 60px 20px; }
+  .testimonials-inner { padding: 60px 20px; }
+  .contact-inner { padding: 60px 20px; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn { width: 100%; max-width: 280px; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/393391234567?text=Salve%20Marco%2C%20vorrei%20prenotare%20un%20taglio" class="whatsapp-fab" target="_blank" rel="noopener" aria-label="Contattaci su WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Barbiere da Marco</h1>
+    <p class="hero-subtitle">Napoli · Dal 2008</p>
+    <p>Taglio classico e moderno per uomo. Barba, styling e grooming con la tradizione artigianale napoletana.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/393391234567?text=Salve%20Marco%2C%20vorrei%20prenotare" class="btn btn-primary" target="_blank" rel="noopener">
+        Prenota su WhatsApp
+      </a>
+      <a href="#servizi" class="btn btn-outline">
+        Scopri i servizi
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="chi-siamo">
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1585747861115-bb9979c05e03?w=600&h=450&fit=crop&q=80" alt="Barbiere da Marco - Interno del negozio" loading="lazy">
+    </div>
+    <div class="about-text">
+      <h3>La tradizione del taglio napoletano</h3>
+      <p>
+        Da oltre 15 anni, Marco accoglie i suoi clienti nel cuore di Napoli con 
+        forbici, pettine e la stessa passione di sempre. Ogni taglio è un 
+        piccolo rito: chiacchiere, caffè, e la cura per i dettagli che fa la differenza.
+      </p>
+      <p>
+        Specializzato nel taglio classico maschile e nelle barbe a regola d'arte, 
+        Marco segue corsi di aggiornamento costanti per unire tradizione e modernità.
+      </p>
+      <p style="font-weight: 600; font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-dark); margin-top: 20px;">
+        "Un buon taglio ti cambia la giornata. Un grande taglio ti cambia la settimana."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servizi">
+  <div class="services-inner">
+    <h2 class="section-title">I nostri servizi</h2>
+    <p class="section-subtitle">Tagli, barbe e trattamentiper la cura dell'uomo</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">✂️</div>
+        <h3>Taglio Uomo</h3>
+        <p>Taglio classico o moderno con forbici e macchinetta. Consultazione inclusa.</p>
+        <span class="service-price">€18</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪒</div>
+        <h3>Barba Completa</h3>
+        <p>Rasatura a regola d'arte con pennello e lametta. Asciugamano caldo incluso.</p>
+        <span class="service-price">€12</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h3>Taglio + Barba</h3>
+        <p>Il nostro pacchetto completo più richiesto: taglio e barba in un'unica seduta.</p>
+        <span class="service-price">€27</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧴</div>
+        <h3>Trattamento Capelli</h3>
+        <p>Lavaggio con prodotti biologici, maschera nutriente e massaggio rilassante.</p>
+        <span class="service-price">€15</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👦</div>
+        <h3>Taglio Bambini</h3>
+        <p>Taglio dedicato ai più piccoli, in un ambiente accogliente e paziente.</p>
+        <span class="service-price">€12</span>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Styling Evento</h3>
+        <p>Acconciatura per cerimonie, eventi e occasioni speciali. Su appuntamento.</p>
+        <span class="service-price">€25</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="galleria">
+  <h2 class="section-title">I nostri lavori</h2>
+  <p class="section-subtitle">Alcuni dei tagli e delle barbe realizzati in bottega</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&h=400&fit=crop&q=80" alt="Taglio uomo classico" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665666?w=400&h=400&fit=crop&q=80" alt="Barba curata" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1567894340315-735d7c361db7?w=400&h=400&fit=crop&q=80" alt="Taglio moderno" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1596728325488-58c87691e9af?w=400&h=400&fit=crop&q=80" alt="Rasatura barba" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1634302086929-71c2f1b9a0d0?w=400&h=400&fit=crop&q=80" alt="Styling capelli" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1560869713-da86b9fa6f9f?w=400&h=400&fit=crop&q=80" alt="Barbiere al lavoro" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonianze">
+  <div class="testimonials-inner">
+    <h2 class="section-title">Cosa dicono i clienti</h2>
+    <p class="section-subtitle">La nostra reputazione è il miglior biglietto da visita</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Marco è un artista delle forbici. Da quando vado da lui non ho più cambiato barbiere. Professionale, preciso e simpaticissimo."</p>
+        <p class="testimonial-author">Antonio R.</p>
+        <p class="testimonial-source">Cliente dal 2019</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Mio figlio di 5 anni adora venire qui! Marco è bravissimo coi bambini, li mette a suo agio e il taglio è sempre perfetto."</p>
+        <p class="testimonial-author">Simona L.</p>
+        <p class="testimonial-source">Mamma di Francesco</p>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Finalmente un barbiere che sa fare la barba vera, con pennello e lametta, come una volta. Consigliatissimo."</p>
+        <p class="testimonial-author">Giuseppe M.</p>
+        <p class="testimonial-source">5★ Google</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT + HOURS -->
+<section class="contact-section" id="contatti">
+  <div class="contact-inner">
+    <h2 class="section-title">Contatti e orari</h2>
+    <p class="section-subtitle">Passa in bottega o prenota comodamente online</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Vieni a trovarci</h3>
+
+        <div class="contact-item">
+          <span class="contact-item-icon">📍</span>
+          <div class="contact-item-text">
+            <strong>Via Toledo 123</strong><br>
+            80134 Napoli (NA)
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-item-icon">📞</span>
+          <div class="contact-item-text">
+            <strong>+39 339 123 4567</strong>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-item-icon">✉️</span>
+          <div class="contact-item-text">
+            marco@barbieredamarco.it
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <span class="contact-item-icon">💈</span>
+          <div class="contact-item-text">
+            <a href="https://wa.me/393391234567?text=Salve%20Marco%2C%20vorrei%20prenotare" style="color: var(--gold); text-decoration: none; font-weight: 600;" target="_blank" rel="noopener">
+              Scrivici su WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3019.929!2d14.250!3d40.839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDUwJzIwLjQiTiAxNMKwMTUnMDAuMCJF!5e0!3m2!1sit!2sit!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa di Via Toledo, Napoli"></iframe>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size: 1.3rem; margin-bottom: 20px; font-family: 'Playfair Display', serif;">Orari di apertura</h3>
+        <table class="hours-table">
+          <tr><td>Lunedì</td><td>09:00 – 13:00 · 15:30 – 19:30</td></tr>
+          <tr><td>Martedì</td><td>09:00 – 13:00 · 15:30 – 19:30</td></tr>
+          <tr><td>Mercoledì</td><td>09:00 – 13:00 · 15:30 – 19:30</td></tr>
+          <tr><td>Giovedì</td><td>09:00 – 13:00 · 15:30 – 19:30</td></tr>
+          <tr><td>Venerdì</td><td>09:00 – 13:00 · 15:30 – 19:30</td></tr>
+          <tr><td>Sabato</td><td>09:00 – 14:00</td></tr>
+          <tr class="closed"><td>Domenica</td><td>Chiuso</td></tr>
+        </table>
+
+        <div style="margin-top: 32px; background: rgba(255,255,255,0.06); padding: 24px; border-radius: 12px;">
+          <p style="color: var(--gold); font-weight: 600; margin-bottom: 8px;">🎯 Prenota ora</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; margin-bottom: 16px;">
+            Basta un messaggio WhatsApp per prenotare il tuo appuntamento. Rispondiamo in pochi minuti.
+          </p>
+          <a href="https://wa.me/393391234567?text=Salve%20Marco%2C%20vorrei%20prenotare" class="btn btn-primary" target="_blank" rel="noopener">
+            Prenota adesso
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2026 Barbiere da Marco · P.IVA 01234561234 · Via Toledo 123, 80134 Napoli</p>
+  <p style="margin-top: 8px; font-size: 0.85rem;">
+    Sito realizzato con ❤️ per la tradizione artigianale napoletana
+  </p>
+</footer>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Barbiere da Marco",
+  "image": "https://images.unsplash.com/photo-1585747861115-bb9979c05e03?w=600",
+  "telephone": "+39 339 123 4567",
+  "email": "marco@barbieredamarco.it",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Toledo 123",
+    "addressLocality": "Napoli",
+    "addressRegion": "NA",
+    "postalCode": "80134",
+    "addressCountry": "IT"
+  },
+  "openingHours": "Mo-Fr 09:00-13:00,15:30-19:30; Sa 09:00-14:00",
+  "url": "https://barbiere-da-marco.surge.sh",
+  "priceRange": "€€",
+  "description": "Barbiere da Marco a Napoli. Taglio uomo, barba, styling da oltre 15 anni."
+}
+</script>
+
+</body>
+</html>
