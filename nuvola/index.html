@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nuvolà – Pizza • Burger • Craft Beer | Mirto Crosia</title>
-<meta name="description" content="Nuvolà a Mirto Crosia: pizzeria gourmet, smash burgers e birra artigianale. Viale Ionio, 95. Aperto dalle 19:00.">
+<meta name="description" content="Nuvolà a Mirto Crosia: pizze classiche e speciali, smash burger, pulled pork, birra artigianale. Viale Ionio, 95. Aperto dalle 19:00.">
 <link rel="icon" href="assets/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -146,33 +146,84 @@
   }
   .about-features li::before { content: '✦'; color: var(--oro); font-size: 1rem; }
 
-  /* MENU */
-  #menu { background: var(--crema); }
-  .menu-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px;
+  /* MENU WRAPPER - slate style like the PDF */
+  .menu-wrapper {
+    background: #1a1a1a;
+    border-radius: 20px;
+    padding: 48px 40px;
     margin-top: 48px;
+    color: #eee;
   }
-  .menu-category h3 {
-    font-size: 1.4rem; color: var(--nero);
-    padding-bottom: 12px; margin-bottom: 20px;
-    border-bottom: 2px solid var(--oro);
+  .menu-wrapper .section-label { color: var(--oro); }
+  .menu-wrapper .section-title { color: #fff; }
+  .menu-wrapper .section-desc { color: #999; }
+
+  .menu-category-wrap {
+    margin-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 32px;
+  }
+  .menu-category-wrap:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+
+  .menu-cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--oro);
+    margin-bottom: 20px;
     display: flex; align-items: center; gap: 10px;
   }
-  .menu-category h3 .icon { font-size: 1.5rem; }
+  .menu-items { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; }
   .menu-item {
     display: flex; justify-content: space-between; align-items: flex-start;
-    padding: 14px 0; border-bottom: 1px dashed #ddd;
+    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .menu-item:last-child { border-bottom: none; }
-  .menu-item .name { font-weight: 600; font-size: 1.05rem; color: var(--nero); }
-  .menu-item .desc { font-size: 0.85rem; color: var(--testo-chiaro); margin-top: 3px; }
-  .menu-item .price { font-weight: 700; color: var(--oro-scuro); white-space: nowrap; margin-left: 12px; }
-  .menu-note {
-    margin-top: 24px; padding: 16px 24px;
-    background: #fff; border-radius: 12px; border-left: 4px solid var(--oro);
-    font-size: 0.9rem; color: var(--testo-chiaro);
-    grid-column: 1 / -1;
+  .menu-item .info { flex: 1; }
+  .menu-item .name {
+    font-weight: 600; font-size: 1rem; color: #fff;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   }
+  .menu-item .name .badge {
+    display: inline-block;
+    background: #c0392b; color: #fff;
+    font-size: 0.6rem; font-weight: 700; padding: 2px 7px;
+    border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .menu-item .name .badge-special {
+    background: var(--oro); color: #1a1a1a;
+  }
+  .menu-item .desc {
+    font-size: 0.82rem; color: #999; margin-top: 3px;
+    line-height: 1.5;
+  }
+  .menu-item .price {
+    font-weight: 700; color: var(--oro);
+    white-space: nowrap; margin-left: 16px; font-size: 1rem;
+  }
+  .menu-half-note {
+    grid-column: 1 / -1;
+    font-size: 0.85rem; color: #888; font-style: italic;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .menu-full-note {
+    grid-column: 1 / -1;
+    background: rgba(201,168,76,0.08);
+    border-left: 3px solid var(--oro);
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 0.88rem; color: #ccc;
+    margin-top: 8px;
+  }
+  .menu-download {
+    text-align: center;
+    margin-top: 40px;
+    padding: 24px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .menu-download p { color: #999; margin-bottom: 12px; }
+  .menu-download .btn { display: inline-flex; align-items: center; gap: 8px; }
 
   /* GALLERIA */
   #galleria { background: #fff; }
@@ -247,8 +298,7 @@
   .contact-form { background: var(--crema); padding: 40px; border-radius: 16px; }
   .contact-form h3 { font-size: 1.3rem; margin-bottom: 8px; }
   .contact-form p { color: var(--testo-chiaro); font-size: 0.9rem; margin-bottom: 24px; }
-  .contact-form .btn { width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; }
-  .contact-form .btn a { color: var(--nero); text-decoration: none; }
+  .contact-form .btn { width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; display: block; text-decoration: none; }
 
   /* FOOTER */
   footer {
@@ -259,14 +309,14 @@
   footer p { font-size: 0.85rem; }
   footer a { color: var(--oro); text-decoration: none; }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
-    .menu-grid { grid-template-columns: 1fr; }
+    .menu-items { grid-template-columns: 1fr; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }
     .reviews-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
     .contact-form { order: -1; }
+    .menu-wrapper { padding: 32px 20px; }
   }
   @media (max-width: 600px) {
     nav .nav-links { display: none; }
@@ -307,8 +357,8 @@
     <h1>Pizza · Burger · <em>Craft Beer</em></h1>
     <p class="tagline">Dal 2024 · Viale Ionio, 95</p>
     <p class="subtitle">
-      Un viaggio nei sapori tra pizze gourmet al forno a legna, smash burger succulenti
-      e birre artigianali selezionate. Tutto con ingredienti di prima qualità.
+      Un viaggio nei sapori tra pizze classiche e speciali, smash burger artigianali,
+      pulled pork e birre selezionate. Tutto con ingredienti di prima qualità.
     </p>
     <div class="hero-buttons">
       <a href="#menu" class="btn btn-primary">Scopri il Menu</a>
@@ -334,9 +384,9 @@
           una storia di <span class="highlight">qualità, cura e innovazione</span>.
         </p>
         <p>
-          Dalla pizza gourmet al forno a legna — con impasto leggero e ingredienti selezionati —
-          agli <strong>smash burger</strong> più amati della zona, passando per panini gourmet
-          e birre artigianali: ogni dettaglio è pensato per stupirti.
+          Dalle pizze classiche napoletane — con impasto leggero e ingredienti selezionati —
+          alle <strong>pizze speciali</strong> più audaci, passando per gli <strong>smash burger</strong>
+          su bun "Mr. Dobelina", il pulled pork e le birre artigianali Flëa: ogni dettaglio è pensato per stupirti.
         </p>
         <p>
           Il locale, curato nei minimi particolari, offre un'atmosfera accogliente con un
@@ -346,10 +396,10 @@
         <ul class="about-features">
           <li>Pizza forno a legna</li>
           <li>Smash burger artigianali</li>
+          <li>Pulled pork</li>
           <li>Opzioni senza glutine</li>
-          <li>Birra artigianale</li>
-          <li>Prodotti di prima qualità</li>
-          <li>Personale giovane e preparato</li>
+          <li>Birra artigianale Flëa</li>
+          <li>Dolci e amari selezionati</li>
         </ul>
       </div>
     </div>
@@ -359,100 +409,177 @@
 <!-- MENU -->
 <section id="menu">
   <div class="container">
-    <span class="section-label">● Il menu</span>
-    <h2 class="section-title">Cosa gustare da Nuvolà</h2>
-    <p class="section-desc">Un'accurata selezione di piatti pensati per ogni palato.</p>
+    <div class="menu-wrapper">
+      <span class="section-label">● Il menu</span>
+      <h2 class="section-title">Menu Nuvolà 2026</h2>
+      <p class="section-desc">Il nostro menu, come da tradizione. Tutte le pietanze sono preparate con ingredienti freschi e di prima qualità.</p>
 
-    <div class="menu-grid">
-      <!-- PIZZE -->
-      <div class="menu-category">
-        <h3><span class="icon">🍕</span> Pizze Gourmet</h3>
-        <div class="menu-item">
-          <div>
-            <div class="name">Amarelli ★</div>
-            <div class="desc">Crudo, stracciatella, polvere di liquirizia — la signature</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Margherita</div>
-            <div class="desc">Mozzarella, basilico, pomodoro San Marzano</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Diavola</div>
-            <div class="desc">Salame piccante, mozzarella, pomodoro</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Pizze senza glutine</div>
-            <div class="desc">Disponibili su richiesta con impasto senza glutine</div>
-          </div>
+      <!-- STARTER -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🥟 Starter</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Crocche di Patate al Caciocavallo</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Arancino Piccantino</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Braciole di Melanzana</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Pepite Pollo Corn Flakes</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Chips Cacio e Pepe</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Patatina Classica</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Alette di Pollo Fritte</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Polpette di Pulled Pork e Cheddar</div></div><div class="price">€5</div></div>
+          <div class="menu-item" style="grid-column:1/-1"><div class="info"><div class="name">Patatina Twister aromatizzata al Pepe di Cayenna e Paprika Dolce</div></div><div class="price">€5</div></div>
+          <div class="menu-half-note">Aggiunta Cheddar e Bacon Croccante +€1,50 · Coperto €1,50</div>
         </div>
       </div>
 
-      <!-- BURGER -->
-      <div class="menu-category">
-        <h3><span class="icon">🍔</span> Smash Burger & Panini</h3>
-        <div class="menu-item">
-          <div>
-            <div class="name">Smash Burger Classico</div>
-            <div class="desc">Carne di prima qualità, cheddar, salsa speciale</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Smash Burger Gourmet</div>
-            <div class="desc">Doppia carne, stracciatella, riduzione di balsamico</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Panini di Alta Qualità</div>
-            <div class="desc">Ingredienti abbondanti e selezionati</div>
-          </div>
+      <!-- PIZZE CLASSICHE -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🍕 Pizze Classiche</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Margherita</div><div class="desc">pomodoro san marzano, fior di latte, basilico, olio evo</div></div><div class="price">€5,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Marinara</div><div class="desc">pomodoro san marzano, olio all'aglio, origano</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Margherita Sbagliata</div><div class="desc">pomodoro san marzano, fior di latte, olio all'aglio, origano</div></div><div class="price">€6</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Napoli</div><div class="desc">pomodoro san marzano, fior di latte, olio evo, capperi, alici</div></div><div class="price">€7</div></div>
+          <div class="menu-item"><div class="info"><div class="name">La Stagioni</div><div class="desc">pomodoro san marzano, fior di latte, basilico, olio evo, champignon, carciofi, olive nere, prosciutto cotto</div></div><div class="price">€7,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Bufala</div><div class="desc">pomodoro san marzano, mozzarella di bufala, basilico, olio evo</div></div><div class="price">€7,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Diavola e Nduja</div><div class="desc">pomodoro san marzano, fior di latte, basilico, olio evo, salame piccante, nduja</div></div><div class="price">€7,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Tonno e Cipolla</div><div class="desc">pomodoro san marzano, fior di latte, tonno, cipolla, olio evo</div></div><div class="price">€7,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Saracena</div><div class="desc">fior di latte, basilico, olio evo, datterini rossi e gialli, bufala in uscita</div></div><div class="price">€8</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Primavera</div><div class="desc">fior di latte, rucola, datterini rossi e gialli, prosciutto crudo, grana grattuggiato, olio evo</div></div><div class="price">€9</div></div>
+          <div class="menu-full-note">Base Margherita Gluten Free "Amonoglu" €8 · Aggiunta ingrediente +€1 · Aggiunta bufala +€1,50</div>
         </div>
       </div>
 
-      <!-- CONTORNI -->
-      <div class="menu-category">
-        <h3><span class="icon">🥟</span> Contorni & Stuzzicheria</h3>
-        <div class="menu-item">
-          <div>
-            <div class="name">Patatine Cacio e Pepe</div>
-            <div class="desc">Croccanti, mantecate con cacio e pepe nero</div>
-          </div>
+      <!-- PIZZE SPECIAL -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">⭐ Pizze Special</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Amarelli</div><div class="desc">fior di latte, provola affumicata, prosciutto crudo, stracciatella, polvere di liquirizia "Amarelli"</div></div><div class="price">€9</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Bologna</div><div class="desc">fior di latte, mortadella al pistacchio, grana grattuggiato, crema e granella di pistacchio</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Ti Pesto <span class="badge">NEW</span></div><div class="desc">base pesto di basilico, fior di latte, datterini rossi e gialli, ricotta, mandorle</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Fior di Alici <span class="badge badge-special">SPECIAL</span></div><div class="desc">passata di datterino, datterini rossi e gialli, stracciatella, alici, olive taggiasche, bagnetto verde</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Taralluccio <span class="badge">NEW</span></div><div class="desc">fior di latte, rucola in cottura, pancetta arrotolata, ricotta, tarallo sbriciolato</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Fava <span class="badge">NEW</span></div><div class="desc">fior di latte, fave, pecorino, pancetta arrotolata</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Nuvolà</div><div class="desc">fior di latte, crema di tartufo, prosciutto crudo, burratina affumicata, chips di parmigiano</div></div><div class="price">€12</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Sole e Grano <span class="badge">NEW</span></div><div class="desc">fior di latte, datterini rossi e gialli, salsiccia, grana grattuggiato, scaglie di pomodoro secco</div></div><div class="price">€12</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Saporita <span class="badge">NEW</span></div><div class="desc">pomodoro san marzano, bufala, salsiccia stagionata, olive verdi al finocchietto, datterini gialli semi dry, noce macadamia, origano</div></div><div class="price">€12</div></div>
+          <div class="menu-item"><div class="info"><div class="name">La Tonno</div><div class="desc">fior di latte, datterini rossi e gialli, filetti di tonno, cipolla marinata, bagnetto verde</div></div><div class="price">€13</div></div>
+          <div class="menu-full-note">Versione Special Fior di Alici disponibile con Alici del Cantabrico · Aggiunta ingrediente +€1 · Aggiunta bufala +€1,50</div>
         </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Bon Bon di Parmigiano</div>
-            <div class="desc">Sfiziosi bocconcini di parmigiano</div>
-          </div>
+      </div>
+
+      <!-- SMASH BURGER -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🍔 N'Smash Burger</h3>
+        <div class="menu-items">
+          <div class="menu-half-note">* Serviti con patate fritte</div>
+          <div class="menu-item"><div class="info"><div class="name">Zio Me'</div><div class="desc">bun "Mr. Dobelina", pollo corn flakes, insalata a julienne, cetriolini, salsa marocchina</div></div><div class="price">€9</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Ingordo</div><div class="desc">bun "Mr. Dobelina", doppio smash, cipolla croccante, bacon, insalata, cetriolini, cipolla caramellata, siringa di cheddar</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">U.S.A.</div><div class="desc">bun "Mr. Dobelina", doppio smash, bacon, cheddar, salsa burger</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Chick'n'Bun</div><div class="desc">bun "Mr. Dobelina", pollo alla piastra, insalata, pomodoro, mozzarella, salsa yogonese</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Il Montanaro</div><div class="desc">pan pizza craft, doppio smash di salsiccia, porcini trifolati, caciocavallo piastrato, salsa barbecue bianca</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Il Viaggiatore</div><div class="desc">bun "Mr. Dobelina", pollo corn flakes, cipolla croccante, insalata julienne, pomodoro, salsa agropiccante</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Nuvolà</div><div class="desc">bun "Mr. Dobelina", triplo smash, triplo cheddar bacon, insalata, pomodoro, cipolla caramellata</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Lasciate Perdere</div><div class="desc">bun "Mr. Dobelina", doppio smash, cheddar, uovo piastrato, bacon, cipolla caramellata, patate mpacchiuse, maionese</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Lasciate Perdere 2.0</div><div class="desc">pan pizza craft, doppio smash con cipolla smashata, provola affumicata piastrata, cipolla croccante, mayonduja</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Jalapeno <span class="badge">NEW</span></div><div class="desc">bun "Mr. Dobelina", doppio smash, cheddar, bacon, jalapeno, salsa crispy</div></div><div class="price">€11</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Rubeus Hagrid</div><div class="desc">doppio bun "Mr. Dobelina", 4 smash, insalata, doppio pomodoro, doppio bacon, doppio cheddar, cipolla croccante, cipolla caramellata, salsa burger, maionese</div></div><div class="price">€19</div></div>
+        </div>
+      </div>
+
+      <!-- PULLED PORK -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🥩 Pulled Pork</h3>
+        <div class="menu-items">
+          <div class="menu-half-note">* Serviti con patate fritte</div>
+          <div class="menu-item"><div class="info"><div class="name">Pulled 2 <span class="badge">NEW</span></div><div class="desc">pan pizza craft, pulled pork, insalata a julienne, BBQ white</div></div><div class="price">€12</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Pulled 1</div><div class="desc">pan pizza craft, pulled pork, fonduta ai formaggi, cipolla croccante</div></div><div class="price">€13</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Pulled 3</div><div class="desc">pan pizza craft, pulled pork, cappuccio rosso, cipolla croccante, cipolla caramellata, bacon, maionese</div></div><div class="price">€13</div></div>
+        </div>
+      </div>
+
+      <!-- PIATTI & INSALATE -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🥗 Piatti & Insalate</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Chicken Plate</div><div class="desc">pepite di pollo corn flakes, patatine classiche, insalata verde, secret white sauce</div></div><div class="price">€10</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Insalata Semplice</div><div class="desc">insalata verde, tonno pomodoro, mais, carota, cipolla caramellata</div></div><div class="price">€8</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Cesar Salad</div><div class="desc">insalata verde, crostini, pollo corn flakes, pomodoro, salsa cesar</div></div><div class="price">€9</div></div>
+        </div>
+      </div>
+
+      <!-- DOLCI -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🍰 Voglia di Dolce</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Tris di Babà al Rum</div><div class="desc">con panna montata e amarena "Fabbri"</div></div><div class="price">€6</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Pizza alla Nutella</div></div><div class="price">€7</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Soft Ice Cream al Caramello Salato <span class="badge">NEW</span></div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Caffè</div></div><div class="price">€1</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Amari</div></div><div class="price">€3</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Whiskey Jack Daniel's</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Rum Bumbu Original (15 anni)</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Rum Bumbu XO (18 anni)</div></div><div class="price">€5</div></div>
         </div>
       </div>
 
       <!-- BIRRE -->
-      <div class="menu-category">
-        <h3><span class="icon">🍺</span> Birre Artigianali</h3>
-        <div class="menu-item">
-          <div>
-            <div class="name">Birre alla spina</div>
-            <div class="desc">Selezione rotante di birre artigianali italiane</div>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div>
-            <div class="name">Birre in bottiglia</div>
-            <div class="desc">Dal territorio e non solo</div>
-          </div>
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🍺 Le Birre</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Estaminet Hell</div></div><div class="price">€2,50/4,50</div></div>
+          <div class="menu-item"><div class="info"><div class="name">White IPA</div></div><div class="price">€3,50/5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Gordon Red</div></div><div class="price">€3,50/5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Franziskaner Dunkel</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Hacker Pschorr Münchner Hell</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Igea Birra Chiara Gluten Free</div></div><div class="price">€4</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Bianca Lanche — Birrificio Flëa</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Anais Smoked Beer — Birrificio Flëa</div></div><div class="price">€5</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Costanza Bionda Ale — Birrificio Flëa</div></div><div class="price">€5</div></div>
+          <div class="menu-item" style="grid-column:1/-1"><div class="info"><div class="name">Guinness Experience <span class="badge">NEW</span></div><div class="desc">Spillata al momento con sistema Microdraught (568 ml) — La leggendaria Stout irlandese</div></div><div class="price">€6</div></div>
         </div>
       </div>
 
-      <div class="menu-note">
-        ⚠  <strong>MENU COMPLETO 2026:</strong> Scopri tutte le novità!
-        <a href="assets/novita-menu.jpg" target="_blank" style="color:var(--oro-scuro);font-weight:600;">→ Scarica il menu</a>
+      <!-- VINI -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🍷 I Vini</h3>
+        <div class="menu-items">
+          <div class="menu-item"><div class="info"><div class="name">Belfresco Rosso — Tenuta Iuzzolini</div></div><div class="price">€4/15</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Muranera Rosso — Tenuta Iuzzolini</div></div><div class="price">€5/26</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Lumare Rosato — Tenuta Iuzzolini</div></div><div class="price">€4/15</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Madre Goccia Bianco — Tenuta Iuzzolini</div></div><div class="price">€4/15</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Prima Luce Rosato — Cantine de Mare</div></div><div class="price">€4/15</div></div>
+          <div class="menu-item"><div class="info"><div class="name">Pecorello Matto Bianco — Cantine de Mare</div></div><div class="price">€5/22</div></div>
+        </div>
+      </div>
+
+      <!-- SALSE -->
+      <div class="menu-category-wrap">
+        <h3 class="menu-cat-title">🧂 Le Nostre Salse</h3>
+        <div class="menu-items">
+          <div class="menu-half-note" style="grid-column:1/-1">16 salse artigianali tra cui scegliere</div>
+          <div class="menu-item"><div class="info"><div class="name">Maionese</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Ketchup</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Maionese alle Nduja 🌶️</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Curry Ketchup</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Yogonese</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">BBQ</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">BBQ White</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">BBQ Smoked Honey</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Burger</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Crispy</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Marocchina 🌶️</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Cheddar</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Cesar</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Salsa Agropiccante 🌶️</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Secret White Sauce</div></div></div>
+          <div class="menu-item"><div class="info"><div class="name">Yellow Tomato</div></div></div>
+        </div>
+      </div>
+
+      <!-- DOWNLOAD -->
+      <div class="menu-download">
+        <p>📄 Scarica il menu completo in PDF</p>
+        <a href="https://nuvolamirto.wordpress.com/wp-content/uploads/2026/05/menu-nuvola-2026-3.pdf" target="_blank" class="btn btn-primary">📥 Scarica PDF</a>
       </div>
     </div>
   </div>
@@ -464,7 +591,6 @@
     <span class="section-label">● Gallery</span>
     <h2 class="section-title">Scatta un assaggio</h2>
     <p class="section-desc">Ecco alcune foto dei nostri piatti e dell'atmosfera del locale.</p>
-
     <div class="gallery-grid">
       <img src="assets/food-1.jpg" alt="Pizza gourmet" loading="lazy">
       <img src="assets/food-2.jpg" alt="Pizza al forno a legna" loading="lazy">
@@ -485,7 +611,6 @@
     <span class="section-label">● Dicono di noi</span>
     <h2 class="section-title">Cosa dicono i clienti</h2>
     <p class="section-desc">La passione per la qualità si sente — ecco cosa raccontano.</p>
-
     <div class="reviews-grid">
       <div class="review-card">
         <div class="stars">★★★★★</div>
@@ -501,7 +626,7 @@
       </div>
       <div class="review-card">
         <div class="stars">★★★★★</div>
-        <blockquote>"Ambiente accogliente e grazioso, gestito da giovani ragazzi molto preparati. Le pietanze ordinate erano eccellenti e squisite! Prodotti di prima qualità anche per la pizza senza glutine. Consiglio vivamente!"</div>
+        <blockquote>"Ambiente accogliente e grazioso, gestito da giovani ragazzi molto preparati. Le pietanze ordinate erano eccellenti e squisite! Prodotti di prima qualità anche per la pizza senza glutine. Consiglio vivamente!"</blockquote>
         <div class="author">— Rosamaria L.</div>
         <div class="source">Google Reviews</div>
       </div>
@@ -527,11 +652,9 @@
     <span class="section-label">● Contatti</span>
     <h2 class="section-title">Prenota o scrivici</h2>
     <p class="section-desc">Un messaggio, una chiamata o un passaggio — siamo qui per te.</p>
-
     <div class="contact-grid">
       <div class="contact-info">
         <h3>Info e prenotazioni</h3>
-
         <div class="contact-item">
           <div class="icon">📍</div>
           <div>
@@ -539,7 +662,6 @@
             <div class="value">Viale Ionio, 95, 87060 Crosia CS</div>
           </div>
         </div>
-
         <div class="contact-item">
           <div class="icon">📞</div>
           <div>
@@ -547,7 +669,6 @@
             <a href="tel:+393773409069" class="value">+39 377 340 9069</a>
           </div>
         </div>
-
         <div class="contact-item">
           <div class="icon">🕐</div>
           <div>
@@ -555,7 +676,6 @@
             <div class="value">Tutti i giorni · 19:00 – 01:00</div>
           </div>
         </div>
-
         <div class="contact-item">
           <div class="icon">👶</div>
           <div>
@@ -563,21 +683,19 @@
             <div class="value">Menu bambini · Accesso disabili · Parcheggio</div>
           </div>
         </div>
-
         <div class="contact-social">
           <a href="https://www.instagram.com/nuvolamirto/" target="_blank" title="Instagram">📸</a>
-          <a href="https://www.tiktok.com/@nuvolamirto" target="_blank" title="TikTok">🎵</a>
+          <a href="https://www.tiktok.com/@nuvola_mirto" target="_blank" title="TikTok">🎵</a>
           <a href="https://wa.me/393773409069" target="_blank" title="WhatsApp">💬</a>
           <a href="https://g.page/r/CeHD7384R80GEAE/review" target="_blank" title="Lascia una recensione">⭐</a>
         </div>
       </div>
-
       <div class="contact-form">
         <h3>Prenota un tavolo</h3>
         <p>Chiamaci o scrivici su WhatsApp per prenotare il tuo posto.</p>
-        <a href="tel:+393773409069" class="btn btn-primary" style="display:block;text-align:center;color:var(--nero);text-decoration:none;">📞 Chiama ora</a>
-        <br>
-        <a href="https://wa.me/393773409069" target="_blank" class="btn btn-primary" style="display:block;text-align:center;background:#25D366;color:#fff;text-decoration:none;">💬 WhatsApp</a>
+        <a href="tel:+393773409069" class="btn btn-primary" style="background:var(--oro);color:var(--nero);">📞 Chiama +39 377 340 9069</a>
+        <br><br>
+        <a href="https://wa.me/393773409069" target="_blank" class="btn btn-primary" style="background:#25D366;color:#fff;">💬 WhatsApp</a>
       </div>
     </div>
   </div>
@@ -585,7 +703,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2025 <a href="#">Nuvolà</a> — Pizza • Burger • Craft Beer — Mirto Crosia (CS)</p>
+  <p>© 2025 <a href="#">Nuvolà</a> — Pizza · Burger · Craft Beer — Mirto Crosia (CS)</p>
   <p style="margin-top:6px;font-size:0.75rem;color:#555;">Viale Ionio, 95 · +39 377 340 9069 · Tutte le sere dalle 19:00</p>
 </footer>
 
