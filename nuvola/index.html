@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuvolà – Pizza • Burger • Craft Beer | Mirto Crosia</title>
+<meta name="description" content="Nuvolà a Mirto Crosia: pizzeria gourmet, smash burgers e birra artigianale. Viale Ionio, 95. Aperto dalle 19:00.">
+<link rel="icon" href="assets/favicon.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --nero: #1a1a1a;
+    --carbone: #2d2d2d;
+    --crema: #faf6f0;
+    --oro: #c9a84c;
+    --oro-scuro: #a8882e;
+    --beige: #e8ddd0;
+    --testo: #3a3a3a;
+    --testo-chiaro: #6b6b6b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--crema);
+    color: var(--testo);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26,26,26,0.92); backdrop-filter: blur(12px);
+    padding: 14px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  nav .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700;
+    color: var(--oro); text-decoration: none;
+  }
+  nav .logo img { height: 36px; width: auto; }
+  nav .nav-links { display: flex; gap: 28px; list-style: none; }
+  nav .nav-links a {
+    color: #ccc; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+    transition: color 0.3s; letter-spacing: 0.5px;
+  }
+  nav .nav-links a:hover { color: var(--oro); }
+  .menu-toggle { display: none; background: none; border: none; color: var(--oro); font-size: 1.8rem; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2420 50%, #1a1a1a 100%);
+    position: relative; overflow: hidden;
+    padding: 120px 24px 80px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.08) 0%, transparent 60%);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/ambient-1.jpg') center/cover no-repeat;
+    opacity: 0.12; z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 750px; }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+    color: var(--oro); padding: 6px 18px; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-logo { height: 90px; width: auto; margin-bottom: 20px; }
+  .hero h1 {
+    font-size: clamp(2.8rem, 7vw, 5rem); color: #fff;
+    line-height: 1.1; margin-bottom: 12px;
+  }
+  .hero h1 em { font-style: italic; color: var(--oro); }
+  .hero .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.4rem); color: #999;
+    letter-spacing: 4px; font-weight: 300; text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+  .hero .subtitle {
+    font-size: 1.05rem; color: #aaa; max-width: 550px; margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 14px 36px; border-radius: 8px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: all 0.3s; letter-spacing: 0.3px;
+  }
+  .btn-primary { background: var(--oro); color: var(--nero); }
+  .btn-primary:hover { background: var(--oro-scuro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+  .btn-outline { border: 1.5px solid rgba(255,255,255,0.25); color: #fff; }
+  .btn-outline:hover { border-color: var(--oro); color: var(--oro); background: rgba(201,168,76,0.08); }
+
+  /* SEZIONI */
+  section { padding: 90px 0; }
+  .section-label {
+    display: inline-block;
+    color: var(--oro-scuro); font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem); color: var(--nero);
+    margin-bottom: 16px;
+  }
+  .section-desc {
+    font-size: 1.05rem; color: var(--testo-chiaro); max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* CHI SIAMO */
+  #chi-siamo { background: #fff; }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    margin-top: 48px;
+  }
+  .about-image {
+    border-radius: 16px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+  .about-image img { width: 100%; height: 450px; object-fit: cover; display: block; }
+  .about-text p { margin-bottom: 16px; color: var(--testo-chiaro); font-size: 1.05rem; }
+  .about-text .highlight { color: var(--oro-scuro); font-weight: 600; }
+  .about-features {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px;
+  }
+  .about-features li {
+    list-style: none; padding: 10px 16px; background: var(--crema);
+    border-radius: 8px; font-size: 0.95rem; font-weight: 500;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .about-features li::before { content: '✦'; color: var(--oro); font-size: 1rem; }
+
+  /* MENU */
+  #menu { background: var(--crema); }
+  .menu-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px 60px;
+    margin-top: 48px;
+  }
+  .menu-category h3 {
+    font-size: 1.4rem; color: var(--nero);
+    padding-bottom: 12px; margin-bottom: 20px;
+    border-bottom: 2px solid var(--oro);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .menu-category h3 .icon { font-size: 1.5rem; }
+  .menu-item {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px dashed #ddd;
+  }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item .name { font-weight: 600; font-size: 1.05rem; color: var(--nero); }
+  .menu-item .desc { font-size: 0.85rem; color: var(--testo-chiaro); margin-top: 3px; }
+  .menu-item .price { font-weight: 700; color: var(--oro-scuro); white-space: nowrap; margin-left: 12px; }
+  .menu-note {
+    margin-top: 24px; padding: 16px 24px;
+    background: #fff; border-radius: 12px; border-left: 4px solid var(--oro);
+    font-size: 0.9rem; color: var(--testo-chiaro);
+    grid-column: 1 / -1;
+  }
+
+  /* GALLERIA */
+  #galleria { background: #fff; }
+  .gallery-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    margin-top: 40px;
+  }
+  .gallery-grid img {
+    width: 100%; height: 280px; object-fit: cover; border-radius: 8px;
+    transition: transform 0.4s, box-shadow 0.4s; cursor: pointer;
+  }
+  .gallery-grid img:hover {
+    transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+  }
+  .gallery-grid .tall { grid-row: span 2; height: auto; }
+
+  /* RECENSIONI */
+  #recensioni { background: var(--crema); }
+  .reviews-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 48px;
+  }
+  .review-card {
+    background: #fff; padding: 28px; border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+  .review-card:hover { transform: translateY(-4px); }
+  .review-card .stars { color: #f5b342; font-size: 1.1rem; margin-bottom: 12px; }
+  .review-card blockquote {
+    font-style: italic; color: var(--testo); font-size: 0.95rem;
+    line-height: 1.7; margin-bottom: 16px;
+  }
+  .review-card .author { font-weight: 600; font-size: 0.85rem; color: var(--testo-chiaro); }
+  .review-card .source { font-size: 0.75rem; color: var(--testo-chiaro); opacity: 0.7; }
+
+  /* DOVE SIAMO */
+  #dove-siamo { background: var(--nero); color: #ccc; }
+  #dove-siamo .section-title { color: #fff; }
+  #dove-siamo .section-desc { color: #999; }
+  .map-container { margin-top: 40px; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+  .map-container iframe { width: 100%; height: 400px; border: none; display: block; }
+
+  /* CONTATTI */
+  #contatti { background: #fff; }
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 48px; align-items: start;
+  }
+  .contact-info h3 { font-size: 1.3rem; margin-bottom: 24px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+  }
+  .contact-item .icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: var(--crema); display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .contact-item .label { font-size: 0.8rem; color: var(--testo-chiaro); }
+  .contact-item .value { font-weight: 600; color: var(--nero); }
+  .contact-item a.value { color: var(--oro-scuro); text-decoration: none; }
+  .contact-item a.value:hover { text-decoration: underline; }
+  .contact-social {
+    display: flex; gap: 12px; margin-top: 24px;
+  }
+  .contact-social a {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--crema); display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 1.3rem; transition: all 0.3s;
+    color: var(--testo);
+  }
+  .contact-social a:hover { background: var(--oro); color: #fff; transform: translateY(-3px); }
+  .contact-form { background: var(--crema); padding: 40px; border-radius: 16px; }
+  .contact-form h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .contact-form p { color: var(--testo-chiaro); font-size: 0.9rem; margin-bottom: 24px; }
+  .contact-form .btn { width: 100%; text-align: center; border: none; cursor: pointer; font-size: 1rem; }
+  .contact-form .btn a { color: var(--nero); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    background: var(--nero); color: #666; text-align: center;
+    padding: 32px 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer p { font-size: 0.85rem; }
+  footer a { color: var(--oro); text-decoration: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .contact-form { order: -1; }
+  }
+  @media (max-width: 600px) {
+    nav .nav-links { display: none; }
+    .menu-toggle { display: block; }
+    nav .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,26,26,0.98); padding: 20px; gap: 16px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid img { height: 240px; }
+    .about-features { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn { width: 100%; max-width: 280px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <img src="assets/logo-white-bg.png" alt="Nuvolà">
+    Nuvolà
+  </a>
+  <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+  <ul class="nav-links">
+    <li><a href="#chi-siamo">Storia</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#galleria">Gallery</a></li>
+    <li><a href="#recensioni">Recensioni</a></li>
+    <li><a href="#dove-siamo">Dove siamo</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Mirto Crosia · Calabria</div>
+    <img src="assets/logo-white-bg.png" alt="Nuvolà" class="hero-logo">
+    <h1>Pizza · Burger · <em>Craft Beer</em></h1>
+    <p class="tagline">Dal 2024 · Viale Ionio, 95</p>
+    <p class="subtitle">
+      Un viaggio nei sapori tra pizze gourmet al forno a legna, smash burger succulenti
+      e birre artigianali selezionate. Tutto con ingredienti di prima qualità.
+    </p>
+    <div class="hero-buttons">
+      <a href="#menu" class="btn btn-primary">Scopri il Menu</a>
+      <a href="https://maps.app.goo.gl/QfTMDfBCamQdeoDQ6" target="_blank" class="btn btn-outline">Come Arrivare</a>
+    </div>
+  </div>
+</section>
+
+<!-- CHI SIAMO -->
+<section id="chi-siamo">
+  <div class="container">
+    <span class="section-label">● Chi siamo</span>
+    <h2 class="section-title">La nostra storia</h2>
+    <p class="section-desc">Un angolo di eccellenza culinaria a Mirto Crosia.</p>
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="assets/food-3.jpg" alt="Nuvolà ambiente">
+      </div>
+      <div class="about-text">
+        <p>
+          <strong>Nuvolà</strong> nasce dalla passione per la buona cucina e dalla voglia di creare
+          un'esperienza unica nel cuore della <strong>Calabria</strong>. Qui ogni piatto racconta
+          una storia di <span class="highlight">qualità, cura e innovazione</span>.
+        </p>
+        <p>
+          Dalla pizza gourmet al forno a legna — con impasto leggero e ingredienti selezionati —
+          agli <strong>smash burger</strong> più amati della zona, passando per panini gourmet
+          e birre artigianali: ogni dettaglio è pensato per stupirti.
+        </p>
+        <p>
+          Il locale, curato nei minimi particolari, offre un'atmosfera accogliente con un
+          incantevole <strong>dehors estivo</strong> che nelle calde serate regala frescura
+          e relax. Perfetto per cene romantiche, serate tra amici o una pausa di gusto.
+        </p>
+        <ul class="about-features">
+          <li>Pizza forno a legna</li>
+          <li>Smash burger artigianali</li>
+          <li>Opzioni senza glutine</li>
+          <li>Birra artigianale</li>
+          <li>Prodotti di prima qualità</li>
+          <li>Personale giovane e preparato</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <span class="section-label">● Il menu</span>
+    <h2 class="section-title">Cosa gustare da Nuvolà</h2>
+    <p class="section-desc">Un'accurata selezione di piatti pensati per ogni palato.</p>
+
+    <div class="menu-grid">
+      <!-- PIZZE -->
+      <div class="menu-category">
+        <h3><span class="icon">🍕</span> Pizze Gourmet</h3>
+        <div class="menu-item">
+          <div>
+            <div class="name">Amarelli ★</div>
+            <div class="desc">Crudo, stracciatella, polvere di liquirizia — la signature</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Margherita</div>
+            <div class="desc">Mozzarella, basilico, pomodoro San Marzano</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Diavola</div>
+            <div class="desc">Salame piccante, mozzarella, pomodoro</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Pizze senza glutine</div>
+            <div class="desc">Disponibili su richiesta con impasto senza glutine</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BURGER -->
+      <div class="menu-category">
+        <h3><span class="icon">🍔</span> Smash Burger & Panini</h3>
+        <div class="menu-item">
+          <div>
+            <div class="name">Smash Burger Classico</div>
+            <div class="desc">Carne di prima qualità, cheddar, salsa speciale</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Smash Burger Gourmet</div>
+            <div class="desc">Doppia carne, stracciatella, riduzione di balsamico</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Panini di Alta Qualità</div>
+            <div class="desc">Ingredienti abbondanti e selezionati</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTORNI -->
+      <div class="menu-category">
+        <h3><span class="icon">🥟</span> Contorni & Stuzzicheria</h3>
+        <div class="menu-item">
+          <div>
+            <div class="name">Patatine Cacio e Pepe</div>
+            <div class="desc">Croccanti, mantecate con cacio e pepe nero</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Bon Bon di Parmigiano</div>
+            <div class="desc">Sfiziosi bocconcini di parmigiano</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BIRRE -->
+      <div class="menu-category">
+        <h3><span class="icon">🍺</span> Birre Artigianali</h3>
+        <div class="menu-item">
+          <div>
+            <div class="name">Birre alla spina</div>
+            <div class="desc">Selezione rotante di birre artigianali italiane</div>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div>
+            <div class="name">Birre in bottiglia</div>
+            <div class="desc">Dal territorio e non solo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-note">
+        ⚠  <strong>MENU COMPLETO 2026:</strong> Scopri tutte le novità!
+        <a href="assets/novita-menu.jpg" target="_blank" style="color:var(--oro-scuro);font-weight:600;">→ Scarica il menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERIA -->
+<section id="galleria">
+  <div class="container">
+    <span class="section-label">● Gallery</span>
+    <h2 class="section-title">Scatta un assaggio</h2>
+    <p class="section-desc">Ecco alcune foto dei nostri piatti e dell'atmosfera del locale.</p>
+
+    <div class="gallery-grid">
+      <img src="assets/food-1.jpg" alt="Pizza gourmet" loading="lazy">
+      <img src="assets/food-2.jpg" alt="Pizza al forno a legna" loading="lazy">
+      <img src="assets/food-3.jpg" alt="Ambiente Nuvolà" loading="lazy" class="tall">
+      <img src="assets/food-4.jpg" alt="Pizza farcita" loading="lazy">
+      <img src="assets/food-5.jpg" alt="Gourmet burger" loading="lazy">
+      <img src="assets/food-6.jpg" alt="Pizza gourmet" loading="lazy">
+      <img src="assets/food-7.jpg" alt="Panino gourmet" loading="lazy">
+      <img src="assets/food-8.jpg" alt="Pizza tagliata" loading="lazy">
+      <img src="assets/food-9.jpg" alt="Pizza e birra" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- RECENSIONI -->
+<section id="recensioni">
+  <div class="container">
+    <span class="section-label">● Dicono di noi</span>
+    <h2 class="section-title">Cosa dicono i clienti</h2>
+    <p class="section-desc">La passione per la qualità si sente — ecco cosa raccontano.</p>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Locale favoloso... Personale gentilissimo ed educato... Poi per non parlare del cibo.. Panini di alta qualità.. con hamburger smash squisiti.. sono rimasta stupita dell'abbondanza degli ingredienti... Cura di ogni dettaglio... I bon bon di parmigiano pazzeschi!"</blockquote>
+        <div class="author">— Rita P.</div>
+        <div class="source">Google Reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Abbiamo scoperto questo locale e credo non lo lasceremo più. Abbiamo mangiato delle pizze buonissime, soprattutto la mia: l'Amarelli, con crudo, stracciatella e polvere di liquirizia. Mai mangiato una cosa del genere, davvero straordinaria."</blockquote>
+        <div class="author">— MariaTeresa T.</div>
+        <div class="source">Google Reviews</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <blockquote>"Ambiente accogliente e grazioso, gestito da giovani ragazzi molto preparati. Le pietanze ordinate erano eccellenti e squisite! Prodotti di prima qualità anche per la pizza senza glutine. Consiglio vivamente!"</div>
+        <div class="author">— Rosamaria L.</div>
+        <div class="source">Google Reviews</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOVE SIAMO -->
+<section id="dove-siamo">
+  <div class="container">
+    <span class="section-label" style="color: var(--oro);">● Dove siamo</span>
+    <h2 class="section-title">Vieni a trovarci</h2>
+    <p class="section-desc">Ti aspettiamo a Mirto Crosia, sul Viale Ionio. Aperto tutte le sere dalle 19:00.</p>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d24194!2d16.771!3d39.601!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x46d41f84f8ef87e1!2sNuvol%C3%A0!5e0!3m2!1sit!2sit!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATTI -->
+<section id="contatti">
+  <div class="container">
+    <span class="section-label">● Contatti</span>
+    <h2 class="section-title">Prenota o scrivici</h2>
+    <p class="section-desc">Un messaggio, una chiamata o un passaggio — siamo qui per te.</p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Info e prenotazioni</h3>
+
+        <div class="contact-item">
+          <div class="icon">📍</div>
+          <div>
+            <div class="label">Indirizzo</div>
+            <div class="value">Viale Ionio, 95, 87060 Crosia CS</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">📞</div>
+          <div>
+            <div class="label">Telefono</div>
+            <a href="tel:+393773409069" class="value">+39 377 340 9069</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">🕐</div>
+          <div>
+            <div class="label">Orari</div>
+            <div class="value">Tutti i giorni · 19:00 – 01:00</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon">👶</div>
+          <div>
+            <div class="label">Extra</div>
+            <div class="value">Menu bambini · Accesso disabili · Parcheggio</div>
+          </div>
+        </div>
+
+        <div class="contact-social">
+          <a href="https://www.instagram.com/nuvolamirto/" target="_blank" title="Instagram">📸</a>
+          <a href="https://www.tiktok.com/@nuvolamirto" target="_blank" title="TikTok">🎵</a>
+          <a href="https://wa.me/393773409069" target="_blank" title="WhatsApp">💬</a>
+          <a href="https://g.page/r/CeHD7384R80GEAE/review" target="_blank" title="Lascia una recensione">⭐</a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Prenota un tavolo</h3>
+        <p>Chiamaci o scrivici su WhatsApp per prenotare il tuo posto.</p>
+        <a href="tel:+393773409069" class="btn btn-primary" style="display:block;text-align:center;color:var(--nero);text-decoration:none;">📞 Chiama ora</a>
+        <br>
+        <a href="https://wa.me/393773409069" target="_blank" class="btn btn-primary" style="display:block;text-align:center;background:#25D366;color:#fff;text-decoration:none;">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 <a href="#">Nuvolà</a> — Pizza • Burger • Craft Beer — Mirto Crosia (CS)</p>
+  <p style="margin-top:6px;font-size:0.75rem;color:#555;">Viale Ionio, 95 · +39 377 340 9069 · Tutte le sere dalle 19:00</p>
+</footer>
+
+</body>
+</html>
